@@ -6,10 +6,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField]  private GameObject mainMenu;
-    [SerializeField] private GameObject inGame;
-    [SerializeField]  private GameObject winScreen;
-    [SerializeField]  private GameObject deathScreen;
+    public Button task1Button;
+    public Button task2Button;
+    public Button task3Button;
+    public Button task4Button;
+    public Button task5Button;
+    public Button quitButton;
 
     private string currentSceneName;
 
@@ -20,7 +22,14 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        SetMenu();
+        //SetMenu();
+
+        task1Button.onClick.AddListener(LoadTask1);
+        task2Button.onClick.AddListener(LoadTask2);
+        task3Button.onClick.AddListener(LoadTask3);
+        task4Button.onClick.AddListener(LoadTask4);
+        task5Button.onClick.AddListener(LoadTask5);
+        quitButton.onClick.AddListener(QuitGame); 
     }
 
     private void Update()
@@ -29,41 +38,13 @@ public class UIManager : MonoBehaviour
         {
             Reload();
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (mainMenu.activeSelf)
-            {
-                SetInGameUI();
-            }
-        }
-    }
-
-    public void SetInGameUI()
-    {
-        DisableUI();
-        Time.timeScale = 1;
-        inGame.SetActive(true);
     }
 
     public void SetMenu()
     {
         DisableUI();
         Time.timeScale = 0;
-        mainMenu.SetActive(true);
-    }
-
-    public void SetWin()
-    {
-        DisableUI();
-        Time.timeScale = 0;
-        winScreen.SetActive(true);
-    }
-
-    public void SetDeath()
-    {
-        DisableUI();
-        Time.timeScale = 0;
-        deathScreen.SetActive(true);
+        //mainMenu.SetActive(true);
     }
 
     private void Reload()
@@ -80,5 +61,35 @@ public class UIManager : MonoBehaviour
         {
             uiObject.SetActive(false);
         }
+    }
+
+    public void LoadTask1()
+    {
+        //SceneManager.LoadScene("Task1");
+    }
+
+    public void LoadTask2()
+    {
+        //SceneManager.LoadScene("Task2");
+    }
+
+    public void LoadTask3()
+    {
+        //SceneManager.LoadScene("Task3");
+    }
+
+    public void LoadTask4()
+    {
+        //SceneManager.LoadScene("Task4");
+    }
+
+    public void LoadTask5()
+    {
+        //SceneManager.LoadScene("Task5");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
