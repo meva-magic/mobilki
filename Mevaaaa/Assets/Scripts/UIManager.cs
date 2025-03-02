@@ -23,12 +23,6 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         //SetMenu();
-
-        task1Button.onClick.AddListener(LoadTask1);
-        task2Button.onClick.AddListener(LoadTask2);
-        task3Button.onClick.AddListener(LoadTask3);
-        task4Button.onClick.AddListener(LoadTask4);
-        task5Button.onClick.AddListener(LoadTask5);
         quitButton.onClick.AddListener(QuitGame); 
     }
 
