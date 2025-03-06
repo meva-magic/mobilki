@@ -8,12 +8,6 @@ public class PlayerCards : MonoBehaviour
 
     public int card = 0;
 
-    public Button SwordButton;
-    public Button RoseButton;
-    public Button CrowButton;
-
-    public TextMeshProUGUI narrator;
-
     private void Awake()
     {
         instance = this;
@@ -23,46 +17,20 @@ public class PlayerCards : MonoBehaviour
     {
         card = 1;
 
-        narrator.text = "Ты выбрал МЕЧ";
-
-        DisableCards();
+        UI.instance.narrator.text = "Ты выбрал МЕЧ";
     }
 
     public void Rose()
     {
         card = 2;
 
-        narrator.text = "Ты выбрал РОЗУ";
-
-        DisableCards();
+        UI.instance.narrator.text = "Ты выбрал РОЗУ";
     }
 
     public void Crow()
     {
         card = 3;
 
-        narrator.text = "Ты выбрал ВОРОНА";
-
-        DisableCards();
-    }
-
-    public void EnableCards()
-    {
-        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
-        
-        foreach (GameObject card in cards)
-        {
-            card.SetActive(true);
-        }
-    }
-
-    public void DisableCards()
-    {
-        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
-        
-        foreach (GameObject card in cards)
-        {
-            card.SetActive(false);
-        }
+        UI.instance.narrator.text = "Ты выбрал ВОРОНА";
     }
 }

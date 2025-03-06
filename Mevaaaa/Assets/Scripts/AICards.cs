@@ -4,22 +4,20 @@ using TMPro;
 
 public class AICards : MonoBehaviour
 {
+    public static AICards instance;
     public Sprite[] sprites;
+    public Image aiImage;
 
     private int aiCard = 0;
 
-    public Image aiImage;
-    [SerializeField] Button actButton;
-    [SerializeField] Button resetButton;
-    [SerializeField] private TextMeshProUGUI narrator;
-
-    public PlayerCards playerCards;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         aiImage.sprite = sprites[0];
-        actButton.gameObject.SetActive(true);
-        resetButton.gameObject.SetActive(false);
     }
 
     public void ActButton()
@@ -29,34 +27,32 @@ public class AICards : MonoBehaviour
 
         aiImage.sprite = sprites[aiCard];
 
-        if (aiCard == playerCards.card)
+        if (aiCard == PlayerCards.instance.card)
         {
-            narrator.text = "ничья";
+            UI.instance.status.text = "ничья";
         }
 
-        else if ((aiCard == 2 && playerCards.card == 0 )|| (aiCard == 0 && playerCards.card == 1) || (aiCard == 1 && playerCards.card == 2))
+        else if ((aiCard == 3 && PlayerCards.instance.card == 1 )|| (aiCard == 1 && PlayerCards.instance.card == 2) || (aiCard == 2 && PlayerCards.instance.card == 3))
         {
-            narrator.text = "победа";
+            UI.instance.status.text = "победа";
         }
 
-        else if ((aiCard == 0 && playerCards.card == 2) || (aiCard == 1 && playerCards.card == 0) || (aiCard == 2 && playerCards.card == 1))
+        else if ((aiCard == 1 && PlayerCards.instance.card == 3) || (aiCard == 2 && PlayerCards.instance.card == 1) || (aiCard == 3 && PlayerCards.instance.card == 2) || PlayerCards.instance.card == 0)
         {
-            narrator.text = "проигрыш";
+            UI.instance.status.text = "проигрыш";
         }
         
-        actButton.gameObject.SetActive(true);
-        resetButton.gameObject.SetActive(true);
+        UI.instance.DisableCards();
+        UI.instance.actButton.gameObject.SetActive(false);
+        UI.instance.resetButton.gameObject.SetActive(true);
     }
 
     public void Reset()
     {
         aiCard = 0;
-        playerCards.EnableCards();
+        aiImage.sprite = sprites[0];
+        PlayerCards.instance.card = 0;
 
-        narrator.text = " ";
-        playerCards.narrator.text = " ";
-
-        actButton.gameObject.SetActive(true);
-        resetButton.gameObject.SetActive(false);
+        UI.instance.ResetUI();
     }
 }
