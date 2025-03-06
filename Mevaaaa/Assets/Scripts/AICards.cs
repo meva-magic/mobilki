@@ -35,11 +35,13 @@ public class AICards : MonoBehaviour
         else if ((aiCard == 3 && PlayerCards.instance.card == 1 )|| (aiCard == 1 && PlayerCards.instance.card == 2) || (aiCard == 2 && PlayerCards.instance.card == 3))
         {
             UI.instance.status.text = "победа";
+            EnemyHealth.instance.DamageEnemy(1);
         }
 
         else if ((aiCard == 1 && PlayerCards.instance.card == 3) || (aiCard == 2 && PlayerCards.instance.card == 1) || (aiCard == 3 && PlayerCards.instance.card == 2) || PlayerCards.instance.card == 0)
         {
             UI.instance.status.text = "проигрыш";
+            PlayerHealth.instance.TakeDamage(1);
         }
         
         UI.instance.DisableCards();
