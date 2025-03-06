@@ -1,5 +1,7 @@
-using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -37,11 +39,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= 1;
+        health -= damage;
 
         if (health <= 0)
         {
-            //player dead
+            SceneManager.LoadScene("Death");
         }
     }
 }

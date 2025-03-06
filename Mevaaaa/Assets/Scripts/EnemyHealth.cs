@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
     public static EnemyHealth instance;
 
     private int maxHealth = 3;
-    [SerializeField] private int health;
+    public int health;
     [SerializeField] private float lerpSpeed;
     
     [SerializeField] private Slider healthSlider;
@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void DamageEnemy(int damage)
+    public void TakeDamage(int damage)
     {
         health -= 1;
 
