@@ -2,17 +2,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Cards : MonoBehaviour
+public class PlayerCards : MonoBehaviour
 {
-    public static Cards instance;
+    public static PlayerCards instance;
+
+    public int card = 0;
 
     public Button SwordButton;
     public Button RoseButton;
     public Button CrowButton;
 
-    public int card = 0;
-
-    [SerializeField] private TextMeshProUGUI narrator;
+    public TextMeshProUGUI narrator;
 
     private void Awake()
     {
@@ -46,7 +46,17 @@ public class Cards : MonoBehaviour
         DisableCards();
     }
 
-    private void DisableCards()
+    public void EnableCards()
+    {
+        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        
+        foreach (GameObject card in cards)
+        {
+            card.SetActive(true);
+        }
+    }
+
+    public void DisableCards()
     {
         GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
         

@@ -1,11 +1,12 @@
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
-public class GameUI : MonoBehaviour
+public class UI : MonoBehaviour
 {
-    public static GameUI instance;
-
+    public static UI instance;
+    
     private string currentSceneName;
 
     private void Awake()
