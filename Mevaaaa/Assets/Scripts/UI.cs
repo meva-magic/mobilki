@@ -66,6 +66,16 @@ public class UI : MonoBehaviour
         }
     }
 
+    public void WinScreen()
+    {
+        SceneManager.LoadScene("Win");
+    }
+
+    public void DeathScreen()
+    {
+        SceneManager.LoadScene("Death");
+    }
+
     private void Reload()
     {
         currentSceneName = SceneManager.GetActiveScene().name;

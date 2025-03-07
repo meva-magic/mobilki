@@ -7,6 +7,7 @@ public class MenuUI : MonoBehaviour
     public static MenuUI instance;
 
     [SerializeField] private Button startButton;
+    [SerializeField] private Button menuButton;
     [SerializeField] private Button quitButton;
 
     private void Awake()
@@ -17,6 +18,7 @@ public class MenuUI : MonoBehaviour
     private void Start()
     {
         startButton.onClick.AddListener(LoadGame);
+        menuButton.onClick.AddListener(MainMenu);
 
         quitButton.onClick.AddListener(QuitGame);
     }
@@ -24,6 +26,11 @@ public class MenuUI : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void QuitGame()
